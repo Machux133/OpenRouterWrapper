@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+:root {
+  font-family: 'Archivo', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #f9fafb;
+
+  --user-bubble: #3b82f6;
+  --bot-bubble: #e5e7eb;
+  --background: #f9fafb;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Add these custom styles */
+.chat-container {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .chat-container {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.message-bubble {
+  transition: all 0.2s ease;
+}
+
+.prose pre {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem !important;
+}
+
+.dark .prose pre {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+/* Scrollbar styles */
+::-webkit-scrollbar-thumb {
+  --tw-border-opacity: 1;
+  background-color: rgba(236, 236, 236, 0.8);
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  border-radius: 9999px;
+  border-width: 1px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(42, 42, 42, 0.8);
+  border-color: rgba(0, 0, 0, var(--tw-border-opacity));
+}
+
+::-webkit-scrollbar {
+  height: 0.4rem;
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 9999px;
+}
+
+/* Code block styles */
+pre code.hljs {
+  padding: 0;
+  background: transparent !important;
+}
+
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('/assets/fonts/Archivo-Variable.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'InstrumentSerif';
+  src: url('/assets/fonts/InstrumentSerif-Regular.ttf');
+  font-display: swap;
+}
+
+/* Remove default button styles */
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #0d0d0d;
+  }
+}

@@ -1,0 +1,43 @@
+name: Build Application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest  # Required for pkg to generate .exe
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    # Build React frontend
+    - name: Build React app
+      working-directory: ./client
+      run: |
+        npm install
+        npm run build
+
+    # Build Node.js backend and package with pkg
+    - name: Build Node.js server
+      working-directory: ./server
+      run: |
+        npm install
+        npm install pkg --save-dev
+        npm run build
+
+    # Upload the executable as an artifact
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: application-executable
+        path: ./server/dist/*.exe
